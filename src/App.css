@@ -60,6 +60,25 @@ form input, select{
   width: 20rem;
   padding: .5rem;
 }
-.input-wrapper{
+#rot{
+  position: relative;
+}
 
+.footer{
+  background-color: white;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 98vw;
+  text-align: center;
+  margin: 0 auto;
+  transform: translateY(-50%);
+}
+header{
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 10;
 }

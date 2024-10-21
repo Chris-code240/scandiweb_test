@@ -4,6 +4,7 @@ import ProductsPage from "./Pages/ProductsPage"
 import AddPage from "./Pages/AddPage"
 import Header from './Components/Header';
 import { useState, useEffect } from "react"
+import Footer from './Components/Footer';
 
 function App() {
 
@@ -17,7 +18,7 @@ function App() {
         <Route path='/' element = {<ProductsPage selectedProducts={selectedProducts} setSelectedProducts={setSelectedProducts} products={products} setProducts={setProducts} />} />
         <Route path='/add' element = {<AddPage />} />
       </Routes>
-
+      <Footer />
     </Router>
   );
 }
