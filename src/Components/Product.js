@@ -5,7 +5,7 @@ const Product = ({product = {}, checkBoxCallBack = ()=>{}})=>{
 
     return (
         <li key={product['sku']} className="product">
-            <input type={'checkbox'} onChange={checkBoxCallBack} />
+            <input type={'checkbox'} onChange={checkBoxCallBack} className="delete-checkbox" />
             <p>{product['sku']}</p>
             <p>{product['name']}</p>
             <p>{product['price']} $</p>

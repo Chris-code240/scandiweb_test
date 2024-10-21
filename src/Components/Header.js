@@ -43,7 +43,7 @@ const Header = ({selectedProducts=[], setSelectedProducts, setProducts, products
                 )}
                 {location.pathname === "/add" && (
                     <ul>
-                    <li><Button text={'SAVE'} type='submit' form={'product-form'} /> </li>
+                    <li><Button text={'SAVE'} type='submit' form={'product_form'} /> </li>
                     <li>
                         <Link to={'/'}>
                             <Button text={'CANCEL'} />
