@@ -1,38 +1,65 @@
-.App {
-  text-align: center;
+.products-wrapper, header{
+  width: 98vw;
+  margin: 0 auto;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.products, nav{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+nav{
+  width: auto !important;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.product{
+  position: relative;
+  width: 15rem;
+  height: 10rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  border: 1px solid black;
+  margin: .4rem .4rem .4rem 0;
+}
+.product input{
+  position: absolute;
+  left: 1%;
+  top: 1%;
+}
+.product p{
+  margin: .4rem 0;
 }
 
-.App-link {
-  color: #61dafb;
+nav{
+  justify-content: space-between;
+}
+nav ul{
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+nav ul li {
+  margin: 0 1rem;
+}
+button{
+  padding: .4rem 1rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+form{
+  
+}
+.input-wrapper{
+  width: 35vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: .4rem 1rem;
+}
+form input, select{
+  width: 20rem;
+  padding: .5rem;
+}
+.input-wrapper{
+
 }
