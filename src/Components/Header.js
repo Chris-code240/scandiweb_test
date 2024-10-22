@@ -24,7 +24,7 @@ const Header = ({selectedProducts=[], setSelectedProducts, setProducts, products
     return (
         <header>
             <nav>
-                {location.pathname === "/" && (<h2>Products Page</h2>)}
+                {location.pathname === "/" && (<h2>Product List</h2>)}
                 {location.pathname === "/add" && (<h2>Add Product </h2>)}
 
                 {location.pathname === "/" && (
@@ -43,10 +43,10 @@ const Header = ({selectedProducts=[], setSelectedProducts, setProducts, products
                 )}
                 {location.pathname === "/add" && (
                     <ul>
-                    <li><Button text={'SAVE'} type='submit' form={'product_form'} /> </li>
+                    <li><Button text={'Save'} type='submit' form={'product_form'} /> </li>
                     <li>
                         <Link to={'/'}>
-                            <Button text={'CANCEL'} />
+                            <Button text={'Cancel'} />
                         </Link>
                     </li>
                 </ul>

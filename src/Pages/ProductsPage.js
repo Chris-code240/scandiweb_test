@@ -5,7 +5,7 @@ import axios from "axios"
 const ProductsPage = ({selectedProducts, setSelectedProducts, setProducts, products})=>{
     useEffect(()=>{
   
-      axios.get('http://christian-marf0.onlinewebshop.net/api.php').then((res)=> {
+      axios.get('https://public-analiese-omen-be55ae91.koyeb.app/api.php').then((res)=> {
         setProducts(res.data)
   
       }).catch((e)=>console.log(e))

@@ -3,10 +3,10 @@
 const Footer = ()=>{
 
     return (
-        <di className="footer">
+        <div className="footer">
             <hr />
             <h3>Scandiweb Test Assignment</h3>
-        </di>
+        </div>
     )
 }
 

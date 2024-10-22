@@ -34,7 +34,7 @@ const AddPage = ()=>{
             if(Object.keys(formData['params']).every((key) => (formData['params'][key] !== undefined && formData['params'][key] !== '' && formData['params'][key] !== null))){
                 setIsEmpty(false)
 
-                axios.post('http://christian-marf0.onlinewebshop.net/api.php', formData).then((res)=>{
+                axios.post('https://public-analiese-omen-be55ae91.koyeb.app/api.php', formData).then((res)=>{
                     if(res.data['success']){
                         navigatpor('/')
                     }else{
