@@ -6,7 +6,7 @@ const AddPage = ()=>{
     
     const isValid = (obj) => Object.values(obj).every(value => value !== undefined && value !== '' && value !== null);
 
-    const navigatpor = useNavigate()
+    const navigator = useNavigate()
     let [isEmpty, setIsEmpty] = useState(false)
     let [formData, setFormData] = useState({name:'', sku: '', price:'',type:'book', params:{weight: ''}})
 
