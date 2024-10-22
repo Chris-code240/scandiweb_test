@@ -3,6 +3,9 @@ import axios from "axios"
 import {useLocation, useNavigate} from "react-router-dom"
 const AddPage = ()=>{
 
+    
+    const isValid = (obj) => Object.values(obj).every(value => value !== undefined && value !== '' && value !== null);
+
     const navigatpor = useNavigate()
     let [isEmpty, setIsEmpty] = useState(false)
     let [formData, setFormData] = useState({name:'', sku: '', price:'',type:'book', params:{weight: ''}})
@@ -29,24 +32,25 @@ const AddPage = ()=>{
         e.preventDefault()
 
 
-        if(Object.keys(formData).every((key) =>( formData[key] !== undefined && formData[key] !== '' && formData[key] !== null))){
+        if (isValid(formData)) {
             setIsEmpty(false)
-            if(Object.keys(formData['params']).every((key) => (formData['params'][key] !== undefined && formData['params'][key] !== '' && formData['params'][key] !== null))){
-                setIsEmpty(false)
-
-                axios.post('https://public-analiese-omen-be55ae91.koyeb.app/api.php', formData).then((res)=>{
-                    if(res.data['success']){
-                        navigatpor('/')
-                    }else{
-                        alert(res.data.message)
-                    }
-                })
-            }else{
-                setIsEmpty(true)
+        
+            if (isValid(formData['params'])) {
+                axios.post('https://public-analiese-omen-be55ae91.koyeb.app/api.php', formData)
+                    .then((res) => {
+                        if (res.data['success']) {
+                            navigator('/');
+                        } else {
+                            console.log(res.data);
+                        }
+                    });
+            } else {
+                setIsEmpty(true);
             }
-        }else{
-            setIsEmpty(true)
+        } else {
+            setIsEmpty(true);
         }
+        
 
 
         
