@@ -11,7 +11,7 @@ const Header = ({selectedProducts=[], setSelectedProducts, setProducts, products
     const handleMassDelete = (e)=>{
 
         console.log(selectedProducts)
-        axios.delete('http://christian-marf0.onlinewebshop.net/api.php',{data:selectedProducts}).then(res =>{
+        axios.delete('https://public-analiese-omen-be55ae91.koyeb.app/api.php',{data:selectedProducts}).then(res =>{
             if(res.data.success){
               for (let p of selectedProducts){
                 setProducts(products.filter(product => product.sku !== p));
