@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import axios from "axios"
 import {useLocation, useNavigate} from "react-router-dom"
 const AddPage = ()=>{
@@ -7,15 +7,26 @@ const AddPage = ()=>{
     const isValid = (obj) => Object.values(obj).every(value => value !== undefined && value !== '' && value !== null);
 
     const navigator = useNavigate()
-    let [isEmpty, setIsEmpty] = useState(false)
+    let [isEmpty, setIsEmpty] = useState(true)
     let [formData, setFormData] = useState({name:'', sku: '', price:'',type:'book', params:{weight: ''}})
+    let [renderIsEmptyWarning, setRenderIsEmptyWarning] = useState(false)
 
-    const handleInputChange = (e)=>{
-
-        const { name, value} = e.target
-        setFormData((prev)=>({...prev, [name]:value}))
-        setIsEmpty(false)
-    }
+     const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prev) => {
+           const updatedFormData = { ...prev, [name]: value };
+     
+           // Perform validation using the updated state
+           if (isValid(updatedFormData) && isValid(updatedFormData.params)) {
+              setIsEmpty(false);
+           } else {
+              setIsEmpty(true);
+           }
+     
+           return updatedFormData;
+        });
+     };
+     
 
     const handleParamChange = (e)=>{
         const type = e.target.value
@@ -24,31 +35,36 @@ const AddPage = ()=>{
 
     const handleParamInputChange = (e)=>{
         let {name , value } = e.target
-            setFormData((prev)=>({...prev, params: {...prev.params, [name]:value}}))
-        setIsEmpty(false)
+            setFormData((prev)=>{
+
+                const updatedFormData = {...prev, params: {...prev.params, [name]:value}}
+                           // Perform validation using the updated state
+                if (isValid(updatedFormData) && isValid(updatedFormData.params)) {
+                    setIsEmpty(false);
+                } else {
+                    setIsEmpty(true);
+                }
+        
+                return updatedFormData;
+            })
 
     }
     const handleSubmit = (e) =>{
         e.preventDefault()
 
 
-        if (isValid(formData)) {
-            setIsEmpty(false)
-        
-            if (isValid(formData['params'])) {
-                axios.post('https://public-analiese-omen-be55ae91.koyeb.app/api.php', formData)
-                    .then((res) => {
-                        if (res.data['success']) {
-                            navigator('/');
-                        } else {
-                            console.log(res.data);
-                        }
-                    });
-            } else {
-                setIsEmpty(true);
-            }
-        } else {
-            setIsEmpty(true);
+        if(!isEmpty){
+            setRenderIsEmptyWarning(true)
+            axios.post('https://public-analiese-omen-be55ae91.koyeb.app/api.php', formData)
+            .then((res) => {
+                if (res.data['success']) {
+                    navigator('/');
+                } else {
+                    console.log(res.data);
+                }
+            });
+        }else{
+            setRenderIsEmptyWarning(true)
         }
         
 
@@ -118,7 +134,7 @@ const AddPage = ()=>{
                         <h4>Please, provide dimensions</h4>
                     </div>
                 )}
-                {isEmpty && (<h2>Please, submit required data</h2>)}
+                {renderIsEmptyWarning && (<h2>Please, submit required data</h2>)}
             </form>
         )
 }
